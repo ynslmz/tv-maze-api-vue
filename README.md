@@ -61,3 +61,11 @@ I followed the instructions on the [documentation](https://router.vuejs.org/inst
 ```
 
 I added a router file, views to navigate with lazy loading and configured App component and the entry point
+
+### Adding Sass and setting up styles
+
+I set up sass for style sheet
+
+```sh
+ npm add sass --save-dev
+```
