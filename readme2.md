@@ -42,10 +42,12 @@ code, reusability, frontend best practices. Show us that you know how to produce
 - You may notice there is no endpoint in the TVMaze API that cleanly returns shows by genre.
   However, the "Show index" endpoint should contain the data you need
 
-#### Design Samples
+#### TO DO
 
 - https://www.tvmaze.com/shows/7480/star-trek-discovery
 
 - https://www.tvmaze.com/api#show-main-information
 
 - https://www.tvmaze.com/api#embedding
+
+- Add Error page
