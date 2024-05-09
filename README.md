@@ -64,8 +64,9 @@ I added a router file, views to navigate with lazy loading and configured App co
 
 ### Adding Sass and setting up styles
 
-I set up sass for style sheet
+I set up sass for style sheets and added some configuration to make style sheets available in components 
 
 ```sh
  npm add sass --save-dev
 ```
+
