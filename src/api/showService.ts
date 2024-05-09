@@ -1,6 +1,6 @@
 import Api from './apiService'
 export const ShowService = {
   getShows() {
-    return Api.get('/showsss')
+    return Api.get('/shows')
   }
 }

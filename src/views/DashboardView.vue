@@ -1,13 +1,9 @@
 <template>
   <div>Home Page</div>
-  {{ response }}
+  {{ store.getShows }}
 </template>
 
 <script setup lang="ts">
-import { ShowService } from '@/api/showService'
-import { ref } from 'vue'
-
-const response = ref<any>(null)
-
-ShowService.getShows().then((res) => (response.value = res))
+import { useShowStore } from '@/store/show'
+const store = useShowStore()
 </script>

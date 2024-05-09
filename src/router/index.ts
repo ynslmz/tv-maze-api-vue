@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DashboardView from '../views/DashboardView.vue'
+import { showsResolver } from './resolvers'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -7,7 +8,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'Dashboard',
-      component: DashboardView
+      component: DashboardView,
+      beforeEnter: showsResolver /// to wait to fetch shows data before entering the route
     },
     {
       path: '/detail/:id',

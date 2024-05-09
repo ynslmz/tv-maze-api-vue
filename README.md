@@ -78,3 +78,30 @@ I read the API_URL from the environment file. I did not ignore it in the gitigno
 ```sh
  npm install axios --save-dev
 ```
+
+### Adding Pinia for state management
+
+I have used Pinia for state management and handled all data process in it
+
+```sh
+ npm install pinia
+```
+
+### Route Resolvers
+
+I will use route resolvers to fetch data before rendering...
+
+```ts
+import { useShowStore } from '@/store/show'
+import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
+
+export async function showsResolver(
+  to: RouteLocationNormalized,
+  from: RouteLocationNormalized,
+  next: NavigationGuardNext
+) {
+  /// first load data
+  await useShowStore().fetchShows()
+  next()
+}
+```
