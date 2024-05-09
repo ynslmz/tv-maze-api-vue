@@ -73,7 +73,7 @@ I set up sass for style sheets and added some configuration to make style sheets
 ### Adding axios for Rest Calls
 
 I added axios for api calls. It's easy to use and it has interceptor functionality to modify or process the requests and responses.
-I read the API_URL from the environment file. I did not ignore it in the gitignore file but it's normally ignored.
+I read the API_URL from the environment file. Please make sure you have a valid environment file like the sample
 
 ```sh
  npm install axios --save-dev
