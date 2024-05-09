@@ -8,7 +8,8 @@ I used `npm create vue@latest` command to create project with minumum help. I wi
 
 ## Instructions to run
 
-I used node v18.20.2 and npm v10.5.0, Please, make sure using minimum these versions or above.
+- I used node v18.20.2 and npm v10.5.0. Please, make sure using minimum these versions or above.
+- Create an environment file from the sample.
 
 ### Dont forget to install dependencies first
 
