@@ -8,7 +8,7 @@ I used `npm create vue@latest` command to create project with minumum help. I wi
 
 ## Instructions to run
 
-I used node v18.20.2 and npm v10.5.0, Pls be sure using minimum these versions or above.
+I used node v18.20.2 and npm v10.5.0, Please, make sure using minimum these versions or above.
 
 ### Dont forget to install dependencies first
 
@@ -64,9 +64,17 @@ I added a router file, views to navigate with lazy loading and configured App co
 
 ### Adding Sass and setting up styles
 
-I set up sass for style sheets and added some configuration to make style sheets available in components 
+I set up sass for style sheets and added some configuration to make style sheets available in components
 
 ```sh
  npm add sass --save-dev
 ```
 
+### Adding axios for Rest Calls
+
+I added axios for api calls. It's easy to use and it has interceptor functionality to modify or process the requests and responses.
+I read the API_URL from the environment file. I did not ignore it in the gitignore file but it's normally ignored.
+
+```sh
+ npm install axios --save-dev
+```
