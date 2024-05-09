@@ -1,13 +1,12 @@
 <template>
-  <header>Tv Maze</header>
-  <nav>
-    <router-link to="/">Dashboard</router-link> |
-    <router-link to="/detail/1">Detail</router-link>
-  </nav>
+  <Header></Header>
 
-  <main>
+  <main class="wrapper">
     <router-view />
   </main>
 </template>
+<script setup lang="ts">
+import Header from './components/layout/Header.vue'
+</script>
 
 <style scoped></style>

@@ -1,1 +1,16 @@
 @use './variables.scss';
+
+.wrapper {
+  max-width: min(100%, $max-width);
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-dir-col {
+  flex-direction: column;
+}

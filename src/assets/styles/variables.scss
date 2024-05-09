@@ -1,1 +1,58 @@
-$spacing: 10px;
+$spacing: 1rem;
+
+$s0: 0;
+$s1: $spacing * 0.25;
+$s2: $spacing * 0.5;
+$s3: $spacing * 0.75;
+$s4: $spacing;
+$s5: $spacing * 1.25;
+$s6: $spacing * 1.5;
+$s7: $spacing * 1.75;
+$s8: $spacing * 2;
+$s9: $spacing * 2.25;
+$s10: $spacing * 2.5;
+
+$max-width: 1200px;
+
+$breakpoints: (
+  'mobile': 768px,
+  'tablet': 992px,
+  'desktop': 1200px
+);
+
+/// colors
+$colors: (
+  white: #f5efe6,
+  gray: #d1d1ce,
+  black: #212529,
+  info: #17a2b8,
+  success: #28a745,
+  danger: #dc3545,
+  primary: #00716b,
+  secondary: #ffd200,
+  primary-dark: scale-color(#00716b, $lightness: -20%),
+  primary-light: scale-color(#00716b, $lightness: 20%),
+  secondary-dark: scale-color(#ffd200, $lightness: -20%),
+  secondary-light: scale-color(#ffd200, $lightness: 20%)
+);
+
+// gradint effect
+$primary-gradient: linear-gradient(
+  to right,
+  map-get($colors, 'primary-dark'),
+  map-get($colors, 'primary-light')
+);
+
+// fonts
+$title-font: 'Roboto Condensed', sans-serif;
+$text-font: Roboto, sans-serif;
+$font-size: 16px;
+
+/// for headings
+@for $i from 1 through 6 {
+  h#{7 - $i} {
+    font-family: $title-font;
+    font-size: 1 + $i * 0.25rem;
+    font-weight: 400 + $i * 100;
+  }
+}
