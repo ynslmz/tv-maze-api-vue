@@ -6,7 +6,6 @@ export async function showsResolver(
   from: RouteLocationNormalized,
   next: NavigationGuardNext
 ) {
-  /// first load data
   await useShowStore().fetchShows()
   next()
 }

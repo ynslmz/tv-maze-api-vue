@@ -39,8 +39,8 @@ $colors: (
 // gradint effect
 $primary-gradient: linear-gradient(
   to right,
-  map-get($colors, 'primary-dark'),
-  map-get($colors, 'primary-light')
+  map-get($colors, primary-dark),
+  map-get($colors, primary-light)
 );
 
 // fonts
