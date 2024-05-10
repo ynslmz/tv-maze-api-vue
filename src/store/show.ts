@@ -46,7 +46,7 @@ export const useShowStore = defineStore('show', {
         })
 
       this.orderedShows = orderedShows
-      this.genres = Object.keys(orderedShows)
+      this.genres = Object.keys(orderedShows).sort() /// sort genres alphabetically
     }
   }
 })

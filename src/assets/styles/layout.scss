@@ -9,8 +9,44 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
 
-.flex-dir-col {
-  flex-direction: column;
+  &-dir-col {
+    flex-direction: column;
+  }
+
+  &-dir-row {
+    flex-direction: row;
+  }
+
+  &-wrap {
+    flex-wrap: wrap;
+  }
+
+  &-justify-start {
+    justify-content: flex-start;
+  }
+
+  &-justify-center {
+    justify-content: center;
+  }
+
+  &-justify-end {
+    justify-content: flex-end;
+  }
+
+  &-justify-between {
+    justify-content: space-between;
+  }
+
+  &-align-start {
+    align-items: flex-start;
+  }
+
+  &-align-center {
+    align-items: center;
+  }
+
+  &-align-end {
+    align-items: flex-end;
+  }
 }
