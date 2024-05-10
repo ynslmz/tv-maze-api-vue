@@ -1,5 +1,8 @@
 <template>
   <div>Home Page</div>
+  {{ store.getGenres }}
+  <br />
+  <br />
   {{ store.getShows }}
 </template>
 
