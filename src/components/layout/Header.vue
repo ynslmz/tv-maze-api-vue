@@ -5,24 +5,29 @@
         <h1>
           <router-link to="/" class="logo-link">TV MAZE</router-link>
         </h1>
-        <div>
-          <input type="text" name="" id="" placeholder="search" />
-        </div>
+
+        <SearchBar />
       </div>
     </div>
   </header>
 </template>
 
+<script setup lang="ts">
+import SearchBar from './SearchBar.vue'
+</script>
+
 <style lang="scss" scoped>
 header {
-  padding: $s7 0;
+  padding: $s3 0;
   background: $primary-gradient;
-  color: $dark;
 
-  .logo-link {
-    color: $light;
-    text-decoration: none;
-    letter-spacing: $s1;
+  h1 {
+    width: 100%;
+    .logo-link {
+      color: $light;
+      text-decoration: none;
+      letter-spacing: $s1;
+    }
   }
 }
 </style>

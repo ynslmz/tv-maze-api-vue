@@ -5,7 +5,7 @@
     :to="`/detail/${show.id}`"
   >
     <div class="show-item-image" :style="imageInStyle">
-      <span class="rating-badge" v-if="show.rating.average">{{ avarageText }}</span>
+      <Badge class="rating-badge" v-if="show.rating.average">{{ avarageText }}</Badge>
 
       <h5 class="show-item-title">
         {{ show.name }}
@@ -21,6 +21,7 @@
 <script setup lang="ts">
 import type { Show } from '@/types/show.type'
 import type { PropType } from 'vue'
+import Badge from './shared/Badge.vue'
 
 const props = defineProps({
   show: { type: Object as PropType<Show>, required: true }
@@ -56,17 +57,10 @@ $img-height: 295px;
     width: $card-width;
     background: cover center center;
     border-radius: $s2;
-
     .rating-badge {
       position: absolute;
       top: $s1;
       left: $s1;
-      font-size: $fs1;
-      line-height: 1;
-      color: $light;
-      padding: $s1;
-      border-radius: $s1;
-      background-color: $success;
     }
   }
 

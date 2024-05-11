@@ -131,3 +131,8 @@ export interface Previousepisode {
   href: string
   name: string | string[]
 }
+
+export interface ShowSearchResult {
+  score: number
+  show: Show
+}

@@ -1,5 +1,5 @@
 import { ShowService } from '@/api/showService'
-import type { Show } from '@/types/show.type'
+import type { Show, ShowSearchResult } from '@/types/show.type'
 import { defineStore } from 'pinia'
 
 export interface ShowStateModel {
@@ -7,6 +7,7 @@ export interface ShowStateModel {
   orderedShows: { [key: string]: Show[] }
   genres: string[]
   show: Show
+  searchResults: ShowSearchResult[]
 }
 
 export const useShowStore = defineStore('show', {
@@ -14,7 +15,8 @@ export const useShowStore = defineStore('show', {
     shows: [],
     orderedShows: {},
     genres: [],
-    show: {} as Show
+    show: {} as Show,
+    searchResults: []
   }),
   getters: {
     getShows: (state) => state.orderedShows,
@@ -24,7 +26,8 @@ export const useShowStore = defineStore('show', {
         return state.orderedShows[genre]
       }
     },
-    getShowDetail: (state) => state.show
+    getShowDetail: (state) => state.show,
+    getSearchResults: (state) => state.searchResults
   },
   actions: {
     async fetchShows(force = false) {
@@ -58,6 +61,15 @@ export const useShowStore = defineStore('show', {
       if (response?.data) {
         this.show = response.data as Show
       }
+    },
+    async searchShows(query: string) {
+      const response = await ShowService.searchShows(query)
+      if (response?.data) {
+        this.searchResults = response.data
+      }
+    },
+    clearSearchResults() {
+      this.searchResults = []
     }
   }
 })

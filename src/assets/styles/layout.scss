@@ -25,6 +25,10 @@
     flex-wrap: wrap;
   }
 
+  &-grow {
+    flex-grow: 1;
+  }
+
   &-justify-start {
     justify-content: flex-start;
   }
