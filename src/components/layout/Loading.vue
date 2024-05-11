@@ -39,7 +39,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: map-get($colors, primary-dark);
+  background: $primary-dark;
   animation: lds-grid 1.2s linear infinite;
 }
 .lds-grid div:nth-child(1) {

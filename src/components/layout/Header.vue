@@ -15,10 +15,10 @@
 header {
   padding: $s7 0;
   background: $primary-gradient;
-  color: map-get($colors, 'dark');
+  color: $dark;
 
   .logo-link {
-    color: white;
+    color: $light;
     text-decoration: none;
     letter-spacing: $s1;
   }
