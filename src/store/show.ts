@@ -27,7 +27,8 @@ export const useShowStore = defineStore('show', {
     getShowDetail: (state) => state.show
   },
   actions: {
-    async fetchShows() {
+    async fetchShows(force = false) {
+      if (!force && this.shows.length > 0) return // if shows are already fetched, return
       const response = await ShowService.getShows()
       if (response?.data) {
         this.shows = response.data
@@ -52,6 +53,7 @@ export const useShowStore = defineStore('show', {
       this.genres = Object.keys(orderedShows).sort() /// sort genres alphabetically
     },
     async fetchShowById(id: string) {
+      if (!!this.show.id && this.show.id.toString() === id) return // if show is already fetched, return
       const response = await ShowService.getShowById(id)
       if (response?.data) {
         this.show = response.data as Show
