@@ -1,11 +1,13 @@
 <template>
   <header>
-    <div class="wrapper flex flex-justify-between">
-      <h1>
-        <router-link to="/" class="logo-link">TV MAZE</router-link>
-      </h1>
-      <div>
-        <input type="text" name="" id="" placeholder="search" />
+    <div class="wrapper">
+      <div class="container flex flex-justify-between">
+        <h1>
+          <router-link to="/" class="logo-link">TV MAZE</router-link>
+        </h1>
+        <div>
+          <input type="text" name="" id="" placeholder="search" />
+        </div>
       </div>
     </div>
   </header>

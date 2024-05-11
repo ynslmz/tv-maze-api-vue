@@ -6,13 +6,15 @@ export interface ShowStateModel {
   shows: Show[]
   orderedShows: { [key: string]: Show[] }
   genres: string[]
+  show: Show
 }
 
 export const useShowStore = defineStore('show', {
   state: (): ShowStateModel => ({
     shows: [],
     orderedShows: {},
-    genres: []
+    genres: [],
+    show: {} as Show
   }),
   getters: {
     getShows: (state) => state.orderedShows,
@@ -21,7 +23,8 @@ export const useShowStore = defineStore('show', {
       return (genre: string) => {
         return state.orderedShows[genre]
       }
-    }
+    },
+    getShowDetail: (state) => state.show
   },
   actions: {
     async fetchShows() {
@@ -47,6 +50,12 @@ export const useShowStore = defineStore('show', {
 
       this.orderedShows = orderedShows
       this.genres = Object.keys(orderedShows).sort() /// sort genres alphabetically
+    },
+    async fetchShowById(id: string) {
+      const response = await ShowService.getShowById(id)
+      if (response?.data) {
+        this.show = response.data as Show
+      }
     }
   }
 })

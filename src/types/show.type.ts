@@ -5,7 +5,6 @@ export interface Show {
   type: string
   language: string
   genres: string[]
-  status: Status
   runtime: number | null
   averageRuntime: number
   premiered: Date
@@ -22,6 +21,8 @@ export interface Show {
   summary: string
   updated: number
   _links: Links
+  status: string
+  _embedded: Embedded
 }
 
 export interface Links {
@@ -30,19 +31,8 @@ export interface Links {
   nextepisode?: Episode
 }
 
-export interface Episode {
-  href: string
-  name: string
-}
-
 export interface Self {
   href: string
-}
-
-export interface Country {
-  name: string
-  code: string
-  timezone: string
 }
 
 export interface Externals {
@@ -50,31 +40,6 @@ export interface Externals {
   thetvdb: number | null
   imdb: null | string
 }
-
-// export enum Genre {
-//   Action = 'Action',
-//   Adventure = 'Adventure',
-//   Anime = 'Anime',
-//   Comedy = 'Comedy',
-//   Crime = 'Crime',
-//   Drama = 'Drama',
-//   Espionage = 'Espionage',
-//   Family = 'Family',
-//   Fantasy = 'Fantasy',
-//   History = 'History',
-//   Horror = 'Horror',
-//   Legal = 'Legal',
-//   Medical = 'Medical',
-//   Music = 'Music',
-//   Mystery = 'Mystery',
-//   Romance = 'Romance',
-//   ScienceFiction = 'Science-Fiction',
-//   Sports = 'Sports',
-//   Supernatural = 'Supernatural',
-//   Thriller = 'Thriller',
-//   War = 'War',
-//   Western = 'Western'
-// }
 
 export interface Image {
   medium: string
@@ -97,8 +62,72 @@ export interface Schedule {
   days: string[]
 }
 
-export enum Status {
-  Ended = 'Ended',
-  Running = 'Running',
-  ToBeDetermined = 'To Be Determined'
+export interface Embedded {
+  cast: Cast[]
+  episodes: Episode[]
+}
+
+export interface Cast {
+  person: Person
+  character: Character
+  self: boolean
+  voice: boolean
+}
+
+export interface Character {
+  id: number
+  url: string
+  name: string
+  image: Image
+  _links: CharacterLinks
+}
+
+export interface CharacterLinks {
+  self: Self
+}
+
+export interface Person {
+  id: number
+  url: string
+  name: string
+  country: Country
+  birthday: Date
+  deathday: Date | null
+  gender: string
+  image: Image
+  updated: number
+  _links: CharacterLinks
+}
+
+export interface Country {
+  name: string
+  code: string
+  timezone: string
+}
+
+export interface Episode {
+  id: number
+  url: string
+  name: string
+  season: number
+  number: number
+  type: string
+  airdate: Date
+  airtime: string
+  airstamp: Date
+  runtime: number
+  rating: Rating
+  image: Image
+  summary: string
+  _links: EpisodeLinks
+}
+
+export interface EpisodeLinks {
+  self: Self
+  show: Previousepisode
+}
+
+export interface Previousepisode {
+  href: string
+  name: string | string[]
 }

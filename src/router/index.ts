@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DashboardView from '../views/DashboardView.vue'
-import { showsResolver } from './resolvers'
+import { showDetailResolver, showsResolver } from './resolvers'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -14,7 +14,25 @@ const router = createRouter({
     {
       path: '/detail/:id',
       name: 'detail',
-      component: () => import('../views/DetailView.vue')
+      component: () => import('../views/DetailView.vue'),
+      beforeEnter: showDetailResolver,
+      children: [
+        {
+          path: '',
+          name: 'main',
+          component: () => import('../views/detail/MainView.vue')
+        },
+        {
+          path: 'cast',
+          name: 'cast',
+          component: () => import('../views/detail/CastView.vue')
+        },
+        {
+          path: 'episodes',
+          name: 'episodes',
+          component: () => import('../views/detail/EpisodesView.vue')
+        }
+      ]
     },
     {
       path: '/:pathMatch(.*)*',
