@@ -48,6 +48,7 @@ $breakpoints: (
 $light: #ffffff;
 $gray: #d2d2d2;
 $dark: #212529;
+$background-color: #f9f9f9;
 $info: #17a2b8;
 $success: #28a745;
 $danger: #dc3545;
@@ -57,6 +58,5 @@ $primary-dark: scale-color(#00716b, $lightness: -20%);
 $primary-light: scale-color(#00716b, $lightness: 20%);
 $secondary-dark: scale-color(#ffd200, $lightness: -20%);
 $secondary-light: scale-color(#ffd200, $lightness: 20%);
-
 // gradint effect
 $primary-gradient: linear-gradient(to right, $primary-dark, $primary-light);
