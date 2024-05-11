@@ -1,14 +1,13 @@
 @use './variables.scss';
 
 .wrapper {
+  $left-spacing: calc((100vw - min(100vw, $max-width)) / 2);
   max-width: min(100%, $max-width);
-  margin: 0 auto;
+  margin-left: $left-spacing;
 }
 
 .flex {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
 
   &-dir-col {
     flex-direction: column;

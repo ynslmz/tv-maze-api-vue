@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="wrapper flex">
+    <div class="wrapper flex flex-justify-between">
       <h1>
         <router-link to="/" class="logo-link">TV MAZE</router-link>
       </h1>
@@ -13,7 +13,7 @@
 
 <style lang="scss" scoped>
 header {
-  padding: $s7;
+  padding: $s7 0;
   background: $primary-gradient;
   color: map-get($colors, 'dark');
 

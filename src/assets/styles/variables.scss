@@ -1,16 +1,36 @@
-$spacing: 1rem;
+// fonts
+$title-font: 'Roboto Condensed', sans-serif;
+$text-font: Roboto, sans-serif;
+$font-size: 16px;
 
-$s0: 0;
-$s1: $spacing * 0.25;
-$s2: $spacing * 0.5;
-$s3: $spacing * 0.75;
-$s4: $spacing;
-$s5: $spacing * 1.25;
-$s6: $spacing * 1.5;
-$s7: $spacing * 1.75;
-$s8: $spacing * 2;
-$s9: $spacing * 2.25;
-$s10: $spacing * 2.5;
+$spacing: 1rem; // 16px
+$s0: 0; // 0px
+$s1: $spacing * 0.25; // 4px
+$s2: $spacing * 0.5; // 8px
+$s3: $spacing * 0.75; // 12px
+$s4: $spacing; // 16px
+$s5: $spacing * 1.25; // 20px
+$s6: $spacing * 1.5; // 24px
+$s7: $spacing * 1.75; // 28px
+$s8: $spacing * 2; // 32px
+$s9: $spacing * 2.25; // 36px
+$s10: $spacing * 2.5; // 40px
+
+$fs1: $font-size * 0.75;
+$fs2: $font-size * 0.875;
+$fs3: $font-size * 1;
+$fs4: $font-size * 1.25;
+$fs5: $font-size * 1.5;
+$fs6: $font-size * 2.5;
+
+/// for headings
+@for $i from 1 through 6 {
+  h#{7 - $i} {
+    font-family: $title-font;
+    font-size: 1 + $i * 0.25rem;
+    font-weight: 400 + $i * 100;
+  }
+}
 
 $max-width: 1200px;
 
@@ -23,7 +43,7 @@ $breakpoints: (
 /// colors
 $colors: (
   white: #f5efe6,
-  gray: #d1d1ce,
+  gray: #e2e2e2,
   black: #212529,
   info: #17a2b8,
   success: #28a745,
@@ -42,17 +62,3 @@ $primary-gradient: linear-gradient(
   map-get($colors, primary-dark),
   map-get($colors, primary-light)
 );
-
-// fonts
-$title-font: 'Roboto Condensed', sans-serif;
-$text-font: Roboto, sans-serif;
-$font-size: 16px;
-
-/// for headings
-@for $i from 1 through 6 {
-  h#{7 - $i} {
-    font-family: $title-font;
-    font-size: 1 + $i * 0.25rem;
-    font-weight: 400 + $i * 100;
-  }
-}
