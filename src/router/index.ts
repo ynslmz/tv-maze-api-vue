@@ -19,17 +19,17 @@ const router = createRouter({
       children: [
         {
           path: '',
-          name: 'main',
+          name: '',
           component: () => import('../views/detail/MainView.vue')
         },
         {
           path: 'cast',
-          name: 'cast',
+          name: 'Cast',
           component: () => import('../views/detail/CastView.vue')
         },
         {
           path: 'episodes',
-          name: 'episodes',
+          name: 'Episodes',
           component: () => import('../views/detail/EpisodesView.vue')
         }
       ]
