@@ -55,7 +55,7 @@ describe('Image.vue', () => {
     expect(wrapper.vm.$options.props.size.validator('original')).toBe(true)
   })
 
-  it('should show a placeholder image if image prop is not provided', () => {
+  it('shows a placeholder image if image prop is not provided', () => {
     const wrapper = mount(Image, {
       props: {
         ...mockImageProps,

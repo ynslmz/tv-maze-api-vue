@@ -6,7 +6,7 @@ import { getMockShowResults } from '../../utils/test-data.mock'
 const mockSearchResults = getMockShowResults(5)
 
 describe('SearchResults', () => {
-  it('should render', () => {
+  it('renders a list without crashing', () => {
     const wrapper = mount(SearchResults, {
       props: {
         list: mockSearchResults
@@ -15,7 +15,7 @@ describe('SearchResults', () => {
     expect(wrapper.findAll('a.result-item').length).toBe(mockSearchResults.length)
   })
 
-  it('should show no results text when no results are found', () => {
+  it('shows no results text when no results are found', () => {
     const wrapper = mount(SearchResults, {
       props: {
         list: []
