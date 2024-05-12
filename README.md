@@ -37,6 +37,12 @@ npm run build
 npm run lint
 ```
 
+#### Run tests
+
+```sh
+npm run test
+```
+
 ## Steps
 
 ### Git Setup

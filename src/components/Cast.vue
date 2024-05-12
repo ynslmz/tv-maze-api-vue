@@ -27,7 +27,6 @@ defineProps({
     color: $primary;
   }
   .artist {
-    width: 200px;
     margin: $s3;
   }
 }

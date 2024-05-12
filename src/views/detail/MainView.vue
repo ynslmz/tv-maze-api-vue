@@ -1,6 +1,6 @@
 <template>
-  <div class="show-info flex flex-justify-between">
-    <Image :image="show.image" :alt="show.name" :style="{ width: '200px', height: '295px' }" />
+  <div class="show-info">
+    <Image class="show-info-image" :image="show.image" :alt="show.name" />
     <p class="show-info-col show-info-summary" v-html="show.summary" />
     <div class="show-info-col show-info-table">
       <p class="info"><strong>Rating:</strong> {{ show.rating.average }}</p>
@@ -29,9 +29,18 @@ const show = store.show
 
 <style lang="scss" scoped>
 .show-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   background-color: $light;
   padding: $s5;
   margin: $s5 0;
+
+  &-image {
+    width: 210px;
+    height: 295px;
+  }
+
   &-col {
     width: calc((100% - 200px - $s6) / 2);
     margin-left: $s3;
@@ -55,10 +64,25 @@ const show = store.show
       margin-bottom: $s3;
     }
   }
-}
 
-.card {
-  width: 200px;
-  margin: $s5;
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    &-image {
+      width: 100%;
+      height: auto;
+    }
+
+    &-col {
+      width: 100%;
+      margin: $s3 0;
+      border-left: none;
+      padding-left: 0;
+    }
+
+    &-table {
+      width: 100%;
+    }
+  }
 }
 </style>

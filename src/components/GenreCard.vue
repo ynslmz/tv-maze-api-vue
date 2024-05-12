@@ -32,5 +32,11 @@ defineProps({
   .shows-list {
     overflow: auto hidden;
   }
+
+  @media (max-width: 768px) {
+    &-title {
+      font-size: $fs4;
+    }
+  }
 }
 </style>

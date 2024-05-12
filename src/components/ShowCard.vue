@@ -55,7 +55,6 @@ $img-height: 295px;
     position: relative;
     height: $img-height;
     width: $card-width;
-    background: cover center center;
     border-radius: $s2;
     .rating-badge {
       position: absolute;
@@ -106,6 +105,18 @@ $img-height: 295px;
       color: $primary-dark;
       border-radius: $s1;
       width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    width: $card-width / (3 / 2);
+    &-image {
+      height: $img-height / (3 / 2);
+      width: $card-width / (3 / 2);
+    }
+
+    &-title {
+      font-size: $fs2;
     }
   }
 }
