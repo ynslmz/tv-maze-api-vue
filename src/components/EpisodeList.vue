@@ -3,7 +3,7 @@
     <h4>Episodes</h4>
     <ul>
       <li v-for="episode in episodes" :key="episode.id">
-        <p>
+        <p class="label">
           <strong>{{ `S${episode.season} - ${episode.number}` }}</strong> - {{ episode.name }}
         </p>
       </li>
@@ -30,6 +30,13 @@ defineProps({
   padding: $s5;
   h4 {
     margin-bottom: $s5;
+    color: $primary-dark;
+  }
+
+  .label {
+    margin: $s3 0;
+    font-size: $fs3;
+    color: $primary;
   }
 }
 </style>
