@@ -106,3 +106,16 @@ export async function showsResolver(
   next()
 }
 ```
+
+### Coding the app
+
+For this step you can check the commit history. I created the application according to requirements. From now on I'll add tests, correct the application logic if there is something missed and I'll add more functionalities If I have time. (12.05.24 15.00)
+
+### Adding Unit Tests
+
+I used the new vitest library, vue-test-utils for unit tests and I added/updated configurations (hit the commit history for details)
+
+```sh
+ npm install vitest
+ npm install @vue/test-utils
+```
