@@ -2,13 +2,13 @@
 
 ### Starting the Project
 
-I used `npm create vue@latest` command to create project with minumum help. I will add features that I need later
+I used the `npm create vue@latest` command to create a project with minimum help. I will add features that I need later
 
 ![alt text](image.png)
 
 ## Instructions to run
 
-- I used node v18.20.2 and npm v10.5.0. Please, make sure using minimum these versions or above.
+- I used node v18.20.2 and npm v10.5.0. Please, make sure to use a minimum of these versions or above.
 - Create an environment file from the sample.
 
 ### Dont forget to install dependencies first
@@ -25,7 +25,7 @@ You can follow the commands below according to your needs
 npm run dev
 ```
 
-#### Type-Check, Compile and Minify for Production
+#### Type-Check, Compile, and Minify for Production
 
 ```sh
 npm run build
@@ -47,7 +47,7 @@ npm run test
 
 ### Git Setup
 
-I initialized the git, targeted my git repository and force pushed to skip main branch protection
+I initialized the git, targeted my git repository and force pushed to skip the main branch protection
 
 ```sh
 git init
@@ -67,7 +67,7 @@ I followed the instructions on the [documentation](https://router.vuejs.org/inst
  npm add vue-router@4
 ```
 
-I added a router file, views to navigate with lazy loading and configured App component and the entry point
+I added a router file, views to navigate with lazy loading, and configured the App component and the entry point
 
 ### Adding Sass and setting up styles
 
@@ -79,7 +79,7 @@ I set up sass for style sheets and added some configuration to make style sheets
 
 ### Adding axios for Rest Calls
 
-I added axios for api calls. It's easy to use and it has interceptor functionality to modify or process the requests and responses.
+I added Axios for API calls. It's easy to use and it has interceptor functionality to modify or process the requests and responses.
 I read the API_URL from the environment file. Please make sure you have a valid environment file like the sample
 
 ```sh
@@ -88,7 +88,7 @@ I read the API_URL from the environment file. Please make sure you have a valid 
 
 ### Adding Pinia for state management
 
-I have used Pinia for state management and handled all data process in it
+I have used Pinia for state management and handled all data processes in it
 
 ```sh
  npm install pinia
@@ -115,7 +115,7 @@ export async function showsResolver(
 
 ### Coding the app
 
-For this step you can check the commit history. I created the application according to requirements. From now on I'll add tests, correct the application logic if there is something missed and I'll add more functionalities If I have time. (12.05.24 15.00)
+For this step, you can check the commit history. I created the application according to the requirements. From now on I'll add tests, correct the application logic if there is something missed and I'll add more functionalities If I have time. (12.05.24 15.00)
 
 ### Adding Unit Tests
 
