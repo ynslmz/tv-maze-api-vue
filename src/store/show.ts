@@ -8,6 +8,7 @@ export interface ShowStateModel {
   genres: string[]
   show: Show
   searchResults: ShowSearchResult[]
+  page: number
 }
 
 export const useShowStore = defineStore('show', {
@@ -16,7 +17,8 @@ export const useShowStore = defineStore('show', {
     orderedShows: {},
     genres: [],
     show: {} as Show,
-    searchResults: []
+    searchResults: [],
+    page: 1
   }),
   getters: {
     getShows: (state) => state.orderedShows,
@@ -27,12 +29,13 @@ export const useShowStore = defineStore('show', {
       }
     },
     getShowDetail: (state) => state.show,
-    getSearchResults: (state) => state.searchResults
+    getSearchResults: (state) => state.searchResults,
+    getPage: (state) => state.page
   },
   actions: {
-    async fetchShows(force = false) {
+    async fetchShows(force = false, page = 1) {
       if (!force && this.shows.length > 0) return // if shows are already fetched, return
-      const response = await ShowService.getShows()
+      const response = await ShowService.getShows(page)
       if (response?.data) {
         this.shows = response.data
         this.computeOrderedShows(response.data)
@@ -70,6 +73,10 @@ export const useShowStore = defineStore('show', {
     },
     clearSearchResults() {
       this.searchResults = []
+    },
+    setPage(page: number) {
+      this.page = page
+      this.fetchShows(true, page)
     }
   }
 })

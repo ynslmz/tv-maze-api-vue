@@ -36,12 +36,13 @@ $fs10: $font-size * 2; // 32px
   }
 }
 
-$max-width: 1200px;
+$max-width: 1600px;
 
 $breakpoints: (
   'mobile': 768px,
   'tablet': 992px,
-  'desktop': 1200px
+  'desktop': 1200px,
+  'large-desktop': 1600px
 );
 
 /// colors

@@ -5,7 +5,7 @@
       <p class="result-item-details-title">{{ item.name }}</p>
       <Badge v-if="avarageText">{{ avarageText }} </Badge>
     </div>
-    <button class="result-item-btn-detail">></button>
+    <button type="button" class="result-item-btn-detail">></button>
   </a>
 </template>
 
