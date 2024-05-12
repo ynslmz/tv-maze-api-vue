@@ -61,8 +61,8 @@ defineProps({
 
   @media (max-width: 768px) {
     &-image {
-      width: $width / (3 / 2);
-      height: $height / (3 / 2);
+      width: calc($width / 1.5);
+      height: calc($height / 1.5);
     }
 
     &-info {

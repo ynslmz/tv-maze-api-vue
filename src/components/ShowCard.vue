@@ -109,10 +109,10 @@ $img-height: 295px;
   }
 
   @media screen and (max-width: 768px) {
-    width: $card-width / (3 / 2);
+    width: calc($card-width / 1.5);
     &-image {
-      height: $img-height / (3 / 2);
-      width: $card-width / (3 / 2);
+      height: calc($img-height/1.5);
+      width: calc($card-width/1.5);
     }
 
     &-title {
