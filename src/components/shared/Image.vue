@@ -3,7 +3,9 @@
 </template>
 <script setup lang="ts">
 import type { Image } from '@/types/show.type'
+import { noImageUrl } from '@/utils/constValues'
 import type { PropType } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps({
   image: {
@@ -20,6 +22,6 @@ const props = defineProps({
   },
   style: Object
 })
-
-const source = { ...props.image }[props.size] || 'https://via.placeholder.com/210x295?text=No image'
+const imageUrl = computed(() => ({ ...(props.image ?? {}) })[props.size])
+const source = computed(() => imageUrl.value ?? noImageUrl)
 </script>

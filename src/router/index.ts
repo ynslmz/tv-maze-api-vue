@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import DashboardView from '../views/DashboardView.vue'
 import { showDetailResolver, showsResolver } from './resolvers'
+import DashboardView from '../views/DashboardView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -19,7 +19,7 @@ const router = createRouter({
       children: [
         {
           path: '',
-          name: '',
+          name: 'Info',
           component: () => import('../views/detail/MainView.vue')
         },
         {
