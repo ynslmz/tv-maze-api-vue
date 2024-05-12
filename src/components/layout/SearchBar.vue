@@ -40,7 +40,7 @@ function onSearch() {
 }
 
 function handleClick(e: Event) {
-  const link = (e.target as any).closest('.search-result-item')
+  const link = (e.target as any).closest('.item')
   if (link) {
     const id = link.getAttribute('name')
     if (id) {

@@ -1,9 +1,10 @@
 import { mount } from '@vue/test-utils'
 import Image from './Image.vue'
 import { describe, expect, it } from 'vitest'
+import { getMockImage } from '../../utils/test-data.mock'
 
 const mockImageProps = {
-  image: { medium: 'medium.jpg', original: 'original.jpg' },
+  image: getMockImage(),
   alt: 'Test alt',
   size: 'medium',
   style: { border: '1px solid black' }

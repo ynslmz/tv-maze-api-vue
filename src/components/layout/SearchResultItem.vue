@@ -1,11 +1,11 @@
 <template>
-  <a class="search-result-item flex" :name="item.id">
-    <img class="img" :src="imageUrl" :alt="item.name" />
-    <div class="details flex-grow">
-      <p class="title">{{ item.name }}</p>
-      <Badge v-if="item.rating.average">{{ avarageText }} </Badge>
+  <a class="item flex" :name="item.id">
+    <Image class="item-img" :image="item.image" :alt="item.name" style="" />
+    <div class="item-details flex-grow">
+      <p class="item-details-title">{{ item.name }}</p>
+      <Badge v-if="avarageText">{{ avarageText }} </Badge>
     </div>
-    <button class="btn-detail">></button>
+    <button class="item-btn-detail">></button>
   </a>
 </template>
 
@@ -13,6 +13,7 @@
 import type { Show } from '@/types/show.type'
 import type { PropType } from 'vue'
 import Badge from '@/components/shared/Badge.vue'
+import Image from '@/components/shared/Image.vue'
 
 const props = defineProps({
   item: {
@@ -20,17 +21,16 @@ const props = defineProps({
     required: true
   }
 })
-const imageUrl = props.item.image?.medium || 'https://via.placeholder.com/210x295?text=No image'
 
 const avarageText = props.item.rating.average ? `${props.item.rating.average.toFixed(1)} ⭐️` : ''
 </script>
 <style lang="scss" scoped>
-.search-result-item {
+.item {
   color: $primary-dark;
   padding: $s1;
   text-decoration: none;
 
-  .img {
+  &-img {
     max-height: 80px;
     min-height: 60px;
     min-width: 60px;
@@ -38,35 +38,32 @@ const avarageText = props.item.rating.average ? `${props.item.rating.average.toF
     object-fit: cover;
   }
 
-  .title {
-    text-align: left;
-    font-weight: 500;
-    flex-grow: 1;
-    font-size: $fs2;
-    margin-bottom: $s2;
-  }
-
-  .details {
+  &-details {
     padding: $s1;
     overflow: hidden;
+
+    &-title {
+      text-align: left;
+      font-weight: 500;
+      flex-grow: 1;
+      font-size: $fs3;
+      margin-bottom: $s2;
+    }
   }
 
-  .btn-detail {
+  &-btn-detail {
     background-color: $primary;
     color: $light;
     border: none;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     align-self: center;
-    height: 36px;
-    width: 36px;
+    vertical-align: middle;
+    line-height: 1;
+    font-weight: 900;
+    height: $s8;
+    width: $s8;
     border-radius: 50%;
-  }
-
-  &:nth-last-child(1) {
-    margin-bottom: 0;
+    margin-right: $s5;
   }
 
   &:nth-child(even) {

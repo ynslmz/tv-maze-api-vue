@@ -5,7 +5,6 @@
         <h1>
           <router-link to="/" class="logo-link">TV MAZE</router-link>
         </h1>
-
         <SearchBar />
       </div>
     </div>

@@ -119,7 +119,7 @@ export interface Episode {
   rating: Rating
   image: Image
   summary: string
-  _links: EpisodeLinks
+  _links: EpisodeLinks | null
 }
 
 export interface EpisodeLinks {
