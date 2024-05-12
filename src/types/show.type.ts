@@ -107,18 +107,18 @@ export interface Country {
 
 export interface Episode {
   id: number
-  url: string
+  url: string | null
   name: string
-  season: number
-  number: number
-  type: string
-  airdate: Date
-  airtime: string
-  airstamp: Date
-  runtime: number
-  rating: Rating
-  image: Image
-  summary: string
+  season: number | null
+  number: number | null
+  type: string | null
+  airdate: Date | null
+  airtime: string | null
+  airstamp: Date | null
+  runtime: number | null
+  rating: Rating | null
+  image: Image | null
+  summary: string | null
   _links: EpisodeLinks | null
 }
 

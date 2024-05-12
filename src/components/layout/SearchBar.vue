@@ -11,7 +11,7 @@
       />
     </div>
     <SearchResults
-      v-show="store.getSearchResults.length > 0"
+      v-show="store.getSearchResults.length > 0 || searchText?.length > 0"
       :list="store.getSearchResults"
       @click="handleClick"
     />
@@ -27,7 +27,7 @@ import { useShowStore } from '@/store/show'
 import { useRouter } from 'vue-router'
 
 const store = useShowStore()
-const searchText = defineModel<string>()
+const searchText = defineModel<string>({ default: '' })
 const router = useRouter()
 
 function onSearch() {
@@ -40,7 +40,7 @@ function onSearch() {
 }
 
 function handleClick(e: Event) {
-  const link = (e.target as any).closest('.item')
+  const link = (e.target as any).closest('.result-item')
   if (link) {
     const id = link.getAttribute('name')
     if (id) {

@@ -25,7 +25,7 @@ describe('SearchResultItem.vue', () => {
         ...mockPropData
       }
     })
-    expect(wrapper.find('.item-details-title').text()).toBe(mockShow.name)
+    expect(wrapper.find('.result-item-details-title').text()).toBe(mockShow.name)
     expect(wrapper.find('img').attributes('src')).toBe(mockShow.image?.medium)
     expect(wrapper.find('.badge').text()).toContain(mockShow.rating?.average)
   })

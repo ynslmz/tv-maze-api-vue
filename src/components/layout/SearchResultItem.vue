@@ -1,11 +1,11 @@
 <template>
-  <a class="item flex" :name="item.id">
-    <Image class="item-img" :image="item.image" :alt="item.name" style="" />
-    <div class="item-details flex-grow">
-      <p class="item-details-title">{{ item.name }}</p>
+  <a class="result-item flex" :name="item.id">
+    <Image class="result-item-img" :image="item.image" :alt="item.name" style="" />
+    <div class="result-item-details flex-grow">
+      <p class="result-item-details-title">{{ item.name }}</p>
       <Badge v-if="avarageText">{{ avarageText }} </Badge>
     </div>
-    <button class="item-btn-detail">></button>
+    <button class="result-item-btn-detail">></button>
   </a>
 </template>
 
@@ -25,7 +25,7 @@ const props = defineProps({
 const avarageText = props.item.rating.average ? `${props.item.rating.average.toFixed(1)} ⭐️` : ''
 </script>
 <style lang="scss" scoped>
-.item {
+.result-item {
   color: $primary-dark;
   padding: $s1;
   text-decoration: none;

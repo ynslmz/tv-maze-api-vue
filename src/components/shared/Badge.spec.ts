@@ -15,7 +15,6 @@ describe('Badge.vue', () => {
         default: ['Test']
       }
     })
-    console.log(wrapper.text())
     expect(wrapper.text()).toContain('Test')
   })
 })
