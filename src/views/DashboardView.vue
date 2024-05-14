@@ -18,7 +18,7 @@ import GenreCard from '@/components/GenreCard.vue'
 import Pager from '@/components/Pager.vue'
 const store = useShowStore()
 
-function handleClick(e) {
+function handleClick(e: number) {
   store.setPage(e)
 }
 </script>

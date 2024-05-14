@@ -6,12 +6,13 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/tv-maze-api-vue/',
   plugins: [vue(), VueDevTools()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }, 
+  },
   css: {
     preprocessorOptions: {
       scss: {
