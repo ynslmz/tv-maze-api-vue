@@ -1,9 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import { showDetailResolver, showsResolver } from './resolvers'
 import DashboardView from '../views/DashboardView.vue'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(import.meta.env.VITE_BASE_URL),
   routes: [
     {
       path: '/',
