@@ -1,5 +1,7 @@
 # tv-maze-api-vue
 
+Live Demo >> https://ynslmz.github.io/tv-maze-api-vue
+
 ### Starting the Project
 
 I used the `npm create vue@latest` command to create a project with minimum help. I will add features that I need later
@@ -20,6 +22,8 @@ npm install
 You can follow the commands below according to your needs
 
 #### Compile and Hot-Reload for Development
+
+Before running the application please make sure you have created an `.env` file like the sample
 
 ```sh
 npm run dev
