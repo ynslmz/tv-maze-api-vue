@@ -1,6 +1,14 @@
 <template>
   <div class="pager">
     <button
+      v-if="page !== 1"
+      class="pager-item"
+      type="button"
+      @click="$emit('pageChange', 1)"
+    >
+      First
+    </button>
+    <button
       class="pager-item"
       type="button"
       @click="$emit('pageChange', page - 1)"
@@ -8,7 +16,7 @@
     >
       Previous
     </button>
-    <span class="pager-item">{{ page }}</span>
+    <span class="pager-item active-page">{{ page }}</span>
     <button class="pager-item" type="button" @click="$emit('pageChange', page + 1)">Next</button>
   </div>
 </template>
@@ -20,7 +28,6 @@ defineProps({
 </script>
 <style lang="scss" scoped>
 .pager {
-  width: 200px;
   display: flex;
   justify-content: center;
   margin: $s10;
@@ -42,6 +49,11 @@ defineProps({
     &:disabled {
       cursor: not-allowed;
       color: #ccc;
+    }
+    
+    &.active-page {
+      background-color: $light;
+      color: $primary;
     }
   }
 }
