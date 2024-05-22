@@ -23,9 +23,9 @@ import { useShowStore } from '@/store/show'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 const store = useShowStore()
-const show = store.show
+const show = computed(() => store.getShowDetail)
 const viewName = computed(() => ` ${useRouter().currentRoute.value.name?.toString()}`)
-const showUrl = `/detail/${show?.id}`
+const showUrl = computed(() => `/detail/${show.value?.id}`)
 </script>
 
 <style lang="scss" scoped>

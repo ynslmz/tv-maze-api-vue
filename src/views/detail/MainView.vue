@@ -23,8 +23,9 @@ import { useShowStore } from '@/store/show'
 import EpisodeList from '@/components/EpisodeList.vue'
 import Cast from '@/components/Cast.vue'
 import Image from '@/components/shared/Image.vue'
+import { computed } from 'vue'
 const store = useShowStore()
-const show = store.show
+const show = computed(() => store.getShowDetail)
 </script>
 
 <style lang="scss" scoped>

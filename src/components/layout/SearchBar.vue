@@ -39,11 +39,12 @@ function onSearch() {
   }, 300)
 }
 
-function handleClick(e: Event) {
+async function handleClick(e: Event) {
   const link = (e.target as any).closest('.result-item')
   if (link) {
     const id = link.getAttribute('name')
     if (id) {
+      await store.fetchShowById(id)
       router.push(`/detail/${id}`)
       searchText.value = ''
       store.clearSearchResults()

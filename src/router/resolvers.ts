@@ -15,6 +15,9 @@ export async function showDetailResolver(
   from: RouteLocationNormalized,
   next: NavigationGuardNext
 ) {
-  await useShowStore().fetchShowById(to.params.id.toString())
+  const store = useShowStore()
+  if (!store.getShowDetail?.id) {
+    await store.fetchShowById(to.params.id.toString())
+  }
   next()
 }

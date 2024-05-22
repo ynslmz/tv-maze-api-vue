@@ -1,9 +1,6 @@
 <template>
-  <router-link
-    :title="`Details of ${show.name}`"
-    class="show-item flex flex-dir-col flex-justify-start flex-align-start"
-    :to="`/detail/${show.id}`"
-  >
+  <router-link :title="`Details of ${show.name}`"
+    class="show-item flex flex-dir-col flex-justify-start flex-align-start" :to="`/detail/${show.id}`">
     <div class="show-item-image" :style="imageInStyle">
       <Badge class="rating-badge" v-if="show.rating.average">{{ avarageText }}</Badge>
 
@@ -20,16 +17,16 @@
 
 <script setup lang="ts">
 import type { Show } from '@/types/show.type'
-import type { PropType } from 'vue'
+import { computed, type PropType } from 'vue'
 import Badge from './shared/Badge.vue'
 
 const props = defineProps({
   show: { type: Object as PropType<Show>, required: true }
 })
 
-const avarageText = props.show.rating.average ? `${props.show.rating.average.toFixed(1)} ⭐️` : ''
+const avarageText = computed(() => props.show.rating.average ? `${props.show.rating.average.toFixed(1)} ⭐️` : '')
 
-const imageUrl = props.show.image?.medium || 'https://via.placeholder.com/210x295?text=No image'
+const imageUrl = computed(() => props.show.image?.medium || 'https://via.placeholder.com/210x295?text=No image')
 
 const imageInStyle = `background: center / 100% 100%   no-repeat  url(${imageUrl})`
 </script>
@@ -56,6 +53,7 @@ $img-height: 295px;
     height: $img-height;
     width: $card-width;
     border-radius: $s2;
+
     .rating-badge {
       position: absolute;
       top: $s1;
@@ -110,6 +108,7 @@ $img-height: 295px;
 
   @media screen and (max-width: 768px) {
     width: calc($card-width / 1.5);
+
     &-image {
       height: calc($img-height/1.5);
       width: calc($card-width/1.5);
