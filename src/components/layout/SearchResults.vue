@@ -37,6 +37,7 @@ defineProps({
   .search-results {
     width: 100%;
   }
+
   .no-result-text {
     font-weight: 500;
     color: $primary-dark;

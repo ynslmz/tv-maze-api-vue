@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="bread-crumb">
-      <router-link to="/"> Dashboard > Shows </router-link> >
+      <router-link to="/"> Shows </router-link> >
       <router-link :to="showUrl"> {{ show?.name }}</router-link>
     </div>
 
@@ -20,12 +20,21 @@
 </template>
 <script setup lang="ts">
 import { useShowStore } from '@/store/show'
-import { computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { computed, onBeforeMount } from 'vue'
+import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router'
 const store = useShowStore()
-const show = store.show
+const show = computed(() => store.getShowDetail)
 const viewName = computed(() => ` ${useRouter().currentRoute.value.name?.toString()}`)
-const showUrl = `/detail/${show?.id}`
+const showUrl = computed(() => `/detail/${show.value.id}`)
+const route = useRoute()
+
+onBeforeMount(() => {
+  store.fetchShowById(route.params.id.toString())
+})
+
+onBeforeRouteUpdate((to, from) => {
+  store.fetchShowById(to.params.id.toString())
+})
 </script>
 
 <style lang="scss" scoped>
@@ -34,6 +43,7 @@ const showUrl = `/detail/${show?.id}`
   font-size: $fs3;
   border-bottom: 1px solid $primary-dark;
   color: $primary-dark;
+
   a {
     color: $primary-dark;
     text-decoration: none;
@@ -54,14 +64,17 @@ const showUrl = `/detail/${show?.id}`
   border-radius: $s2;
   margin: $s4 0;
   overflow: hidden;
+
   li {
     display: flex;
+
     a {
       padding: $s4;
       color: $primary;
       text-decoration: none;
       min-width: 60px;
       text-align: center;
+
       &:hover,
       &.active {
         background-color: $primary;

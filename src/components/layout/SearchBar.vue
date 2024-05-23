@@ -2,19 +2,10 @@
   <div class="search-bar">
     <div class="input-group">
       <SearchIcon class="icon" />
-      <input
-        class="input-search"
-        type="text"
-        placeholder="Search"
-        v-model="searchText"
-        @input="onSearch"
-      />
+      <input class="input-search" type="text" placeholder="Search" v-model="searchText" @input="onSearch" />
     </div>
-    <SearchResults
-      v-show="store.getSearchResults.length > 0 || searchText?.length > 0"
-      :list="store.getSearchResults"
-      @click="handleClick"
-    />
+    <SearchResults v-show="store.getSearchResults.length > 0 || searchText?.length > 0" :list="store.getSearchResults"
+      @click="handleClick" />
   </div>
 </template>
 
@@ -40,21 +31,16 @@ function onSearch() {
 }
 
 function handleClick(e: Event) {
-  const link = (e.target as any).closest('.result-item')
-  if (link) {
-    const id = link.getAttribute('name')
-    if (id) {
-      router.push(`/detail/${id}`)
-      searchText.value = ''
-      store.clearSearchResults()
-    }
-  }
+  searchText.value = ''
+  store.clearSearchResults()
 }
+
 </script>
 <style lang="scss" scoped>
 .search-bar {
   position: relative;
   width: 100%;
+
   .input-group {
     display: flex;
     justify-content: flex-end;

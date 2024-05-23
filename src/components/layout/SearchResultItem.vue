@@ -1,17 +1,18 @@
 <template>
-  <a class="result-item flex" :name="item.id">
+  <router-link :to="`/detail/${item.id}`" class="result-item">
     <Image class="result-item-img" :image="item.image" :alt="item.name" style="" />
     <div class="result-item-details flex-grow">
       <p class="result-item-details-title">{{ item.name }}</p>
       <Badge v-if="avarageText">{{ avarageText }} </Badge>
     </div>
-    <button type="button" class="result-item-btn-detail">></button>
-  </a>
+    <span class="result-item-detail"></span>
+  </router-link>
+
 </template>
 
 <script setup lang="ts">
 import type { Show } from '@/types/show.type'
-import type { PropType } from 'vue'
+import { computed, type PropType } from 'vue'
 import Badge from '@/components/shared/Badge.vue'
 import Image from '@/components/shared/Image.vue'
 
@@ -22,10 +23,11 @@ const props = defineProps({
   }
 })
 
-const avarageText = props.item.rating.average ? `${props.item.rating.average.toFixed(1)} ⭐️` : ''
+const avarageText = computed(() => props.item.rating.average ? `${props.item.rating.average.toFixed(1)} ⭐️` : '')
 </script>
 <style lang="scss" scoped>
 .result-item {
+  display: flex;
   color: $primary-dark;
   padding: $s1;
   text-decoration: none;
@@ -51,18 +53,10 @@ const avarageText = props.item.rating.average ? `${props.item.rating.average.toF
     }
   }
 
-  &-btn-detail {
-    background-color: $primary;
-    color: $light;
-    border: none;
-    cursor: pointer;
+  &-detail {
+    border: $s2 solid transparent;
+    border-left: $s4 solid $primary;
     align-self: center;
-    vertical-align: middle;
-    line-height: 1;
-    font-weight: 900;
-    height: $s8;
-    width: $s8;
-    border-radius: 50%;
     margin-right: $s5;
   }
 
