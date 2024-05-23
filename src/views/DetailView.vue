@@ -5,7 +5,7 @@
       <router-link :to="showUrl"> {{ show?.name }}</router-link>
     </div>
 
-    <h4 class="title">{{ show?.name + viewName }}</h4>
+    <h4 class="title">{{ viewName + ' of ' + show?.name }}</h4>
 
     <ul class="detail-menu flex flex-justify-start flex-align-start">
       <li><router-link exact-active-class="active" :to="showUrl"> Main</router-link></li>
@@ -25,7 +25,7 @@ import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router'
 const store = useShowStore()
 const show = computed(() => store.getShowDetail)
 const viewName = computed(() => ` ${useRouter().currentRoute.value.name?.toString()}`)
-const showUrl = computed(() => `/detail/${show.value.id}`)
+const showUrl = computed(() => `/detail/${show.value?.id}`)
 const route = useRoute()
 
 onBeforeMount(() => {

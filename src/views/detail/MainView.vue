@@ -1,5 +1,5 @@
 <template>
-  <div class="show-info">
+  <div class="show-info" v-if="!!show">
     <Image class="show-info-image" :image="show.image" :alt="show.name" />
     <p class="show-info-col show-info-summary" v-html="show.summary" />
     <div class="show-info-col show-info-table">
@@ -13,9 +13,9 @@
     </div>
   </div>
 
-  <Cast :cast="show._embedded.cast" />
+  <Cast :cast="show?._embedded.cast || []" />
 
-  <EpisodeList :episodes="show._embedded.episodes" />
+  <EpisodeList :episodes="show?._embedded.episodes || []" />
 </template>
 
 <script setup lang="ts">

@@ -6,7 +6,7 @@ export interface ShowStateModel {
   shows: Show[]
   orderedShows: { [key: string]: Show[] }
   genres: string[]
-  show: Show
+  show: Show | null
   searchResults: ShowSearchResult[]
   page: number
 }
@@ -16,7 +16,7 @@ export const useShowStore = defineStore('show', {
     shows: [],
     orderedShows: {},
     genres: [],
-    show: {} as Show,
+    show: null,
     searchResults: [],
     page: 1
   }),
@@ -59,7 +59,7 @@ export const useShowStore = defineStore('show', {
       this.genres = Object.keys(orderedShows).sort() /// sort genres alphabetically
     },
     async fetchShowById(id: string) {
-      if (!!this.show.id && this.show.id.toString() === id) return // if show is already fetched, return
+      if (!!this.show?.id && this.show.id.toString() === id) return // if show is already fetched, return
       const response = await ShowService.getShowById(id)
       if (response?.data) {
         this.show = response.data as Show

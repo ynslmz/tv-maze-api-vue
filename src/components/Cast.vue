@@ -22,10 +22,12 @@ defineProps({
   background-color: $light;
   border-radius: $s2;
   padding: $s5;
+
   .title {
     margin-bottom: $s5;
     color: $primary;
   }
+
   .artist {
     margin: $s3;
   }

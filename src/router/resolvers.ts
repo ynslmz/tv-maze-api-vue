@@ -9,3 +9,14 @@ export async function showsResolver(
   await useShowStore().fetchShows()
   next()
 }
+
+
+export async function showInfoResolver(
+  to: RouteLocationNormalized,
+  from: RouteLocationNormalized,
+  next: NavigationGuardNext
+) {
+  if (!useShowStore().getShowDetail)
+    await useShowStore().fetchShowById(to.params.id.toString())
+  next()
+}

@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import { showsResolver } from './resolvers'
+import { showInfoResolver, showsResolver } from './resolvers'
 import DashboardView from '../views/DashboardView.vue'
 
 const router = createRouter({
@@ -19,6 +19,7 @@ const router = createRouter({
         {
           path: '',
           name: 'Info',
+          beforeEnter: showInfoResolver,
           component: () => import('../views/detail/MainView.vue')
         },
         {
