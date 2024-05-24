@@ -12,7 +12,7 @@ describe('SearchResults', () => {
         list: mockSearchResults
       }
     })
-    expect(wrapper.findAll('a.result-item').length).toBe(mockSearchResults.length)
+    expect(wrapper.findAll('.result-item').length).toBe(mockSearchResults.length)
   })
 
   it('shows no results text when no results are found', () => {
