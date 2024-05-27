@@ -39,8 +39,8 @@ jobs:
         run: npm ci
       - name: Configure environment file
         run: |
-          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > .env.production
-          echo "VITE_BASE_URL=${{ secrets.VITE_BASE_URL }}" >> .env.production
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > .env
+          echo "VITE_BASE_URL=${{ secrets.VITE_BASE_URL }}" >> .env
       - name: Unit Testing
         run: npm run test
       - name: Build
