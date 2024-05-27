@@ -15,11 +15,9 @@ import SearchResults from '@/components/layout/SearchResults.vue'
 
 import { debounce } from '@/utils/debounce'
 import { useShowStore } from '@/store/show'
-import { useRouter } from 'vue-router'
 
 const store = useShowStore()
 const searchText = defineModel<string>({ default: '' })
-const router = useRouter()
 
 function onSearch() {
   if (!searchText.value) {
@@ -30,7 +28,7 @@ function onSearch() {
   }, 300)
 }
 
-function handleClick(e: Event) {
+function handleClick() {
   searchText.value = ''
   store.clearSearchResults()
 }

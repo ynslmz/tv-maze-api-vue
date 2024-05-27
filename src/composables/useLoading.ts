@@ -11,6 +11,9 @@ export function useLoading() {
   router.afterEach(() => {
     isLoading.value = false
   })
+
+
+
   return {
     isLoading
   }

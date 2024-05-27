@@ -32,7 +32,7 @@ onBeforeMount(() => {
   store.fetchShowById(route.params.id.toString())
 })
 
-onBeforeRouteUpdate((to, from) => {
+onBeforeRouteUpdate((to) => {
   store.fetchShowById(to.params.id.toString())
 })
 </script>
