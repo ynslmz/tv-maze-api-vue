@@ -9,6 +9,8 @@ export interface ShowStateModel {
   show: Show | null
   searchResults: ShowSearchResult[]
   page: number
+  isLoading: boolean
+  error: string | null
 }
 
 export const useShowStore = defineStore('show', {
@@ -18,7 +20,9 @@ export const useShowStore = defineStore('show', {
     genres: [],
     show: null,
     searchResults: [],
-    page: 1
+    page: 1,
+    isLoading: false,
+    error: null
   }),
   getters: {
     getShows: (state) => state.orderedShows,
@@ -34,11 +38,21 @@ export const useShowStore = defineStore('show', {
   },
   actions: {
     async fetchShows(force = false, page = 1) {
-      if (!force && this.shows.length > 0) return // if shows are already fetched, return
-      const response = await ShowService.getShows(page)
-      if (response?.data) {
-        this.shows = response.data
-        this.computeOrderedShows(response.data)
+      if (!force && this.shows.length > 0 && this.page === page) return
+
+      this.isLoading = true
+      this.error = null
+      try {
+        const response = await ShowService.getShows(page)
+        if (response?.data) {
+          this.shows = response.data
+          this.computeOrderedShows(response.data)
+        }
+      } catch (err) {
+        this.error = 'Show data could not be loaded.'
+        console.error(err)
+      } finally {
+        this.isLoading = false
       }
     },
     computeOrderedShows(shows: Show[]) {
@@ -60,15 +74,34 @@ export const useShowStore = defineStore('show', {
     },
     async fetchShowById(id: string) {
       if (!!this.show?.id && this.show.id.toString() === id) return // if show is already fetched, return
-      const response = await ShowService.getShowById(id)
-      if (response?.data) {
-        this.show = response.data as Show
+
+      this.isLoading = true
+      this.error = null
+      try {
+        const response = await ShowService.getShowById(id)
+        if (response?.data) {
+          this.show = response.data as Show
+        }
+      } catch (err) {
+        this.error = 'Show details could not be loaded.'
+        console.error(err)
+      } finally {
+        this.isLoading = false
       }
     },
     async searchShows(query: string) {
-      const response = await ShowService.searchShows(query)
-      if (response?.data) {
-        this.searchResults = response.data
+      this.isLoading = true
+      this.error = null
+      try {
+        const response = await ShowService.searchShows(query)
+        if (response?.data) {
+          this.searchResults = response.data
+        }
+      } catch (err) {
+        this.error = 'Search could not be performed.'
+        console.error(err)
+      } finally {
+        this.isLoading = false
       }
     },
     clearSearchResults() {
