@@ -54,6 +54,7 @@ const debouncedSearch = createDebounce((query: string) => store.searchShows(quer
 function onSearch() {
   activeIndex.value = -1
   if (!searchText.value) {
+    debouncedSearch.cancel()
     store.clearSearchResults()
     return
   }
@@ -93,6 +94,7 @@ function onKeydown(event: KeyboardEvent) {
 function reset() {
   searchText.value = ''
   activeIndex.value = -1
+  debouncedSearch.cancel()
   store.clearSearchResults()
 }
 

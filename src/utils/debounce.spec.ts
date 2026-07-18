@@ -29,6 +29,17 @@ describe('createDebounce', () => {
     expect(fn).toHaveBeenCalledWith('c')
   })
 
+  it('cancel() drops a pending invocation', () => {
+    const fn = vi.fn()
+    const debounced = createDebounce(fn, 300)
+
+    debounced()
+    debounced.cancel()
+    vi.advanceTimersByTime(300)
+
+    expect(fn).not.toHaveBeenCalled()
+  })
+
   it('keeps separate timers per instance (no shared module state)', () => {
     const first = vi.fn()
     const second = vi.fn()
