@@ -1,4 +1,4 @@
-@use './variables.scss';
+@use './variables.scss' as *;
 
 .wrapper {
   $left-spacing: calc((100vw - min(100vw, $max-width)) / 2);
