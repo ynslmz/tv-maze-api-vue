@@ -18,23 +18,16 @@
 
 <script setup lang="ts">
 import type { ShowSearchResult } from '@/types/show.type'
-import type { PropType } from 'vue'
 import SearchResultItem from './SearchResultItem.vue'
 
-defineProps({
-  list: {
-    type: Object as PropType<ShowSearchResult[]>,
-    required: true
-  },
-  error: {
-    type: Boolean,
-    default: false
-  },
-  activeIndex: {
-    type: Number,
-    default: -1
-  }
-})
+withDefaults(
+  defineProps<{
+    list: ShowSearchResult[]
+    error?: boolean
+    activeIndex?: number
+  }>(),
+  { error: false, activeIndex: -1 }
+)
 </script>
 <style lang="scss" scoped>
 .search-list {

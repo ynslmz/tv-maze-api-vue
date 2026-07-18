@@ -9,19 +9,9 @@
 </template>
 <script setup lang="ts">
 import type { Character, Person } from '@/types/show.type'
-import type { PropType } from 'vue'
 import Image from '@/components/shared/Image.vue'
 
-defineProps({
-  person: {
-    type: Object as PropType<Person>,
-    required: true
-  },
-  character: {
-    type: Object as PropType<Character>,
-    required: true
-  }
-})
+defineProps<{ person: Person; character: Character }>()
 </script>
 <style lang="scss" scoped>
 .person {

@@ -12,14 +12,8 @@
 </template>
 <script setup lang="ts">
 import type { Episode } from '@/types/show.type'
-import type { PropType } from 'vue'
 
-defineProps({
-  episodes: {
-    type: Object as PropType<Episode[]>,
-    required: true
-  }
-})
+defineProps<{ episodes: Episode[] }>()
 </script>
 
 <style lang="scss" scoped>

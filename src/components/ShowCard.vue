@@ -20,15 +20,13 @@
 
 <script setup lang="ts">
 import type { Show } from '@/types/show.type'
-import { computed, type PropType } from 'vue'
+import { computed } from 'vue'
 import Badge from './shared/Badge.vue'
 import { formatRating } from '@/utils/formatRating'
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
 import { noImageUrl } from '@/utils/constValues'
 
-const props = defineProps({
-  show: { type: Object as PropType<Show>, required: true }
-})
+const props = defineProps<{ show: Show }>()
 
 const averageText = computed(() => formatRating(props.show.rating?.average))
 const safeSummary = computed(() => sanitizeHtml(props.show.summary))

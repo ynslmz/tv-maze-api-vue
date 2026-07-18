@@ -11,17 +11,12 @@
 
 <script setup lang="ts">
 import type { Show } from '@/types/show.type'
-import { computed, type PropType } from 'vue'
+import { computed } from 'vue'
 import Badge from '@/components/shared/Badge.vue'
 import Image from '@/components/shared/Image.vue'
 import { formatRating } from '@/utils/formatRating'
 
-const props = defineProps({
-  item: {
-    type: Object as PropType<Show>,
-    required: true
-  }
-})
+const props = defineProps<{ item: Show }>()
 
 const averageText = computed(() => formatRating(props.item.rating?.average))
 </script>

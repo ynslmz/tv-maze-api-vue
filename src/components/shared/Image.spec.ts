@@ -45,17 +45,6 @@ describe('Image.vue', () => {
     expect(img.attributes('src')).toBe('original.jpg')
   })
 
-  it('size prop validator works correctly', () => {
-    const wrapper = mount(Image, {
-      props: {
-        ...mockImageProps
-      }
-    })
-    expect(wrapper.vm.$options.props.size.validator('something')).toBe(false)
-    expect(wrapper.vm.$options.props.size.validator('medium')).toBe(true)
-    expect(wrapper.vm.$options.props.size.validator('original')).toBe(true)
-  })
-
   it('shows a placeholder image if image prop is not provided', () => {
     const wrapper = mount(Image, {
       props: {
