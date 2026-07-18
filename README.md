@@ -24,8 +24,8 @@ A responsive TV‑show dashboard built with **Vue 3** and the public [TVMaze API
 | **Vue 3 + `<script setup>`** | The framework used at ABN AMRO. The Composition API keeps component logic terse and colocated, and `<script setup>` removes boilerplate. |
 | **Vite** | Fast dev server and lean production builds; first‑class Vue + TypeScript support with minimal configuration. |
 | **TypeScript** | The TVMaze payloads are modelled as explicit interfaces (`src/types/show.type.ts`), catching shape mismatches at compile time. |
-| **Pinia store** (`src/store/show.ts`) | A single source of truth for shows, genre grouping, the current show, search results, pagination and request state. All data‑shaping (rating sort + genre grouping) lives here so it is framework‑light and unit‑testable. |
-| **Route resolvers** (`src/router/resolvers.ts`) | Data is prefetched in `beforeEnter` guards so views render with data already present. A genuinely missing show resolves to `/notfound`. |
+| **Pinia setup store** (`src/store/show.ts`) | A single source of truth for shows, genre grouping, the current show, search results, pagination and the request lifecycle (loading/error). State is exposed directly (composition-style, no getter facade). All data‑shaping (rating sort + genre grouping) lives here so it is framework‑light and unit‑testable. |
+| **In-component data composables** (`src/composables/useShowsData.ts`, `useShowData.ts`) | Views fetch through small composables on mount (watching `:id` for the detail route) rather than blocking `beforeEnter` guards — non-blocking navigation, colocated and testable, with the store's loading/error/empty states driving the UI. A genuinely missing show redirects to `/notfound`. |
 | **Client‑side genre grouping** | TVMaze exposes no "shows by genre" endpoint, so the Show index is fetched once and pivoted into `{ [genre]: Show[] }`, each list pre‑sorted by rating. |
 | **Hash history** | GitHub Pages serves static files with no SPA rewrite, so `createWebHashHistory` keeps deep links working without server config. |
 | **Axios with a thin wrapper** (`src/api`) | A single client with one interceptor. Errors are propagated to callers (the store) rather than handled globally, so each feature can degrade independently. |
@@ -100,9 +100,9 @@ src/
 ├── api/          # axios client, TVMaze service, runtime validators
 ├── assets/       # global SCSS (variables, layout, reset)
 ├── components/   # reusable UI (ShowCard, GenreCard, GenreNav, Pager, layout/, shared/)
-├── composables/  # useLoading
-├── router/       # routes + data-prefetch resolvers
-├── store/        # Pinia show store (data + request state)
+├── composables/  # useShowsData, useShowData (in-component data fetching)
+├── router/       # route definitions
+├── store/        # Pinia setup store (data + request lifecycle)
 ├── types/        # TVMaze domain interfaces
 ├── utils/        # debounce, formatRating, sanitizeHtml, constants, test mocks
 └── views/        # DashboardView, DetailView (+ nested Main/Cast/Episodes), NotFoundView
