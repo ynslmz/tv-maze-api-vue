@@ -33,7 +33,7 @@ defineProps({
     overflow: auto hidden;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: $mobile) {
     &-title {
       font-size: $fs4;
     }

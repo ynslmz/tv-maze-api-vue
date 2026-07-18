@@ -31,8 +31,8 @@ export function getMockShow(id = 1): Show {
     status: 'Ended',
     runtime: 60,
     averageRuntime: 60,
-    premiered: new Date('1997-07-27'),
-    ended: id % 2 === 0 ? new Date('2007-06-22') : null,
+    premiered: '1997-07-27',
+    ended: id % 2 === 0 ? '2007-06-22' : null,
     officialSite: 'http://officialSite.com/view/series/1/index.html',
     schedule: {
       time: '20:00',
@@ -69,13 +69,11 @@ export function getMockShow(id = 1): Show {
     _links: {
       self: {
         href: 'https://api.tvmaze.com/shows/204'
-      },
-      previousepisode: {} as any,
-      nextepisode: {} as any
+      }
     },
     _embedded: {
-      episodes: [] as any,
-      cast: [] as any
+      episodes: [],
+      cast: []
     }
   }
 }

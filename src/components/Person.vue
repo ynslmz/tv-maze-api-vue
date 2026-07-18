@@ -59,7 +59,7 @@ defineProps({
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: $mobile) {
     &-image {
       width: calc($width / 1.5);
       height: calc($height / 1.5);

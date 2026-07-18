@@ -7,6 +7,6 @@ export const ShowService = {
     return Api.get(`/shows/${id}?embed[]=cast&embed[]=episodes`)
   },
   searchShows(query: string) {
-    return Api.get(`/search/shows?q=${query}`)
+    return Api.get(`/search/shows?q=${encodeURIComponent(query)}`)
   }
 }

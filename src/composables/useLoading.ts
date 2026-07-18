@@ -12,8 +12,6 @@ export function useLoading() {
     isLoading.value = false
   })
 
-
-
   return {
     isLoading
   }

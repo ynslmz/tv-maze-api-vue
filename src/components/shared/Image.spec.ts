@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils'
 import Image from './Image.vue'
 import { describe, expect, it } from 'vitest'
 import { getMockImage } from '../../utils/test-data.mock'
+import { noImageUrl } from '../../utils/constValues'
 
 const mockImageProps = {
   image: getMockImage(),
@@ -63,6 +64,6 @@ describe('Image.vue', () => {
       }
     })
     const img = wrapper.find('img')
-    expect(img.attributes('src')).toContain('https://via.placeholder.com')
+    expect(img.attributes('src')).toBe(noImageUrl)
   })
 })

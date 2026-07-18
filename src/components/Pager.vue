@@ -9,14 +9,25 @@
       Previous
     </button>
     <span class="pager-item">{{ page }}</span>
-    <button class="pager-item" type="button" @click="$emit('pageChange', page + 1)">Next</button>
+    <button
+      class="pager-item"
+      type="button"
+      @click="$emit('pageChange', page + 1)"
+      :disabled="!hasNext"
+    >
+      Next
+    </button>
   </div>
 </template>
 <script setup lang="ts">
 const $emit = defineEmits(['pageChange'])
-defineProps({
-  page: { type: Number, required: true }
-})
+withDefaults(
+  defineProps<{
+    page: number
+    hasNext?: boolean
+  }>(),
+  { hasNext: true }
+)
 </script>
 <style lang="scss" scoped>
 .pager {

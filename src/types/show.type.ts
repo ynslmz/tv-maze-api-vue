@@ -7,8 +7,8 @@ export interface Show {
   genres: string[]
   runtime: number | null
   averageRuntime: number
-  premiered: Date
-  ended: Date | null
+  premiered: string
+  ended: string | null
   officialSite: null | string
   schedule: Schedule
   rating: Rating
@@ -27,7 +27,7 @@ export interface Show {
 
 export interface Links {
   self: Self
-  previousepisode: Episode
+  previousepisode?: Episode
   nextepisode?: Episode
 }
 
@@ -91,8 +91,8 @@ export interface Person {
   url: string
   name: string
   country: Country
-  birthday: Date
-  deathday: Date | null
+  birthday: string
+  deathday: string | null
   gender: string
   image: Image
   updated: number
@@ -112,9 +112,9 @@ export interface Episode {
   season: number | null
   number: number | null
   type: string | null
-  airdate: Date | null
+  airdate: string | null
   airtime: string | null
-  airstamp: Date | null
+  airstamp: string | null
   runtime: number | null
   rating: Rating | null
   image: Image | null

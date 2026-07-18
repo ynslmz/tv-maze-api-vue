@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // fonts
 $title-font: 'Roboto Condensed', sans-serif;
 $text-font: Roboto, sans-serif;
@@ -51,9 +53,9 @@ $success: #28a745;
 $danger: #dc3545;
 $primary: #00716b;
 $secondary: #ffd200;
-$primary-dark: scale-color(#00716b, $lightness: -20%);
-$primary-light: scale-color(#00716b, $lightness: 20%);
-$secondary-dark: scale-color(#ffd200, $lightness: -20%);
-$secondary-light: scale-color(#ffd200, $lightness: 20%);
+$primary-dark: color.scale(#00716b, $lightness: -20%);
+$primary-light: color.scale(#00716b, $lightness: 20%);
+$secondary-dark: color.scale(#ffd200, $lightness: -20%);
+$secondary-light: color.scale(#ffd200, $lightness: 20%);
 // gradint effect
 $primary-gradient: linear-gradient(to right, $primary-dark, $primary-light);

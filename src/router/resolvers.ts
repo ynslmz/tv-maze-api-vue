@@ -10,13 +10,15 @@ export async function showsResolver(
   next()
 }
 
-
 export async function showInfoResolver(
   to: RouteLocationNormalized,
   from: RouteLocationNormalized,
   next: NavigationGuardNext
 ) {
-  if (!useShowStore().getShowDetail)
-    await useShowStore().fetchShowById(to.params.id.toString())
+  const store = useShowStore()
+  if (!store.getShowDetail) await store.fetchShowById(String(to.params.id))
+  // A missing show is a genuine not-found case — send the user there explicitly
+  // rather than rendering an empty detail screen.
+  if (!store.getShowDetail) return next('/notfound')
   next()
 }

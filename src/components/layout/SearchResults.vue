@@ -1,7 +1,16 @@
 <template>
   <div class="search-list">
-    <div v-if="list.length > 0" class="search-results">
-      <SearchResultItem :item="result.show" v-for="result in list" :key="result.show.id" />
+    <p class="no-result-text" v-if="error" role="alert">Something went wrong. Please try again.</p>
+    <div v-else-if="list.length > 0" class="search-results" id="search-listbox" role="listbox">
+      <SearchResultItem
+        v-for="(result, index) in list"
+        :key="result.show.id"
+        :item="result.show"
+        :id="`search-option-${result.show.id}`"
+        role="option"
+        :aria-selected="index === activeIndex"
+        :class="{ active: index === activeIndex }"
+      />
     </div>
     <p class="no-result-text" v-else>No Results</p>
   </div>
@@ -16,6 +25,14 @@ defineProps({
   list: {
     type: Object as PropType<ShowSearchResult[]>,
     required: true
+  },
+  error: {
+    type: Boolean,
+    default: false
+  },
+  activeIndex: {
+    type: Number,
+    default: -1
   }
 })
 </script>
@@ -36,6 +53,11 @@ defineProps({
 
   .search-results {
     width: 100%;
+
+    .active {
+      outline: 2px solid $primary;
+      outline-offset: -2px;
+    }
   }
 
   .no-result-text {

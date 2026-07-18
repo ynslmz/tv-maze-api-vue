@@ -29,11 +29,11 @@ const showUrl = computed(() => `/detail/${show.value?.id}`)
 const route = useRoute()
 
 onBeforeMount(() => {
-  store.fetchShowById(route.params.id.toString())
+  store.fetchShowById(String(route.params.id))
 })
 
 onBeforeRouteUpdate((to) => {
-  store.fetchShowById(to.params.id.toString())
+  store.fetchShowById(String(to.params.id))
 })
 </script>
 

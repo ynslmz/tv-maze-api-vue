@@ -1,7 +1,7 @@
 <template>
   <div class="show-info" v-if="!!show">
     <Image class="show-info-image" :image="show.image" :alt="show.name" />
-    <p class="show-info-col show-info-summary" v-html="show.summary" />
+    <p class="show-info-col show-info-summary" v-html="safeSummary" />
     <div class="show-info-col show-info-table">
       <p class="info"><strong>Rating:</strong> {{ show.rating.average }}</p>
       <p class="info"><strong>Status:</strong> {{ show.status }}</p>
@@ -23,9 +23,11 @@ import { useShowStore } from '@/store/show'
 import EpisodeList from '@/components/EpisodeList.vue'
 import Cast from '@/components/Cast.vue'
 import Image from '@/components/shared/Image.vue'
-import { computed } from 'vue';
+import { sanitizeHtml } from '@/utils/sanitizeHtml'
+import { computed } from 'vue'
 const store = useShowStore()
 const show = computed(() => store.getShowDetail)
+const safeSummary = computed(() => sanitizeHtml(show.value?.summary))
 </script>
 
 <style lang="scss" scoped>
@@ -67,7 +69,7 @@ const show = computed(() => store.getShowDetail)
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: $mobile) {
     flex-direction: column;
 
     &-image {
