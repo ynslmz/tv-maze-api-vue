@@ -1,6 +1,6 @@
 <template>
   <router-link :to="`/detail/${item.id}`" class="result-item">
-    <Image class="result-item-img" :image="item.image" :alt="item.name" style="" />
+    <Image class="result-item-img" :image="item.image" :alt="item.name" />
     <div class="result-item-details flex-grow">
       <p class="result-item-details-title">{{ item.name }}</p>
       <Badge v-if="averageText">{{ averageText }} </Badge>

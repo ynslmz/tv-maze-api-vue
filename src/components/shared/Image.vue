@@ -16,12 +16,11 @@ const props = defineProps({
     required: true
   },
   size: {
-    type: String,
+    type: String as PropType<'medium' | 'original'>,
     default: 'medium',
     validator: (value: string) => ['medium', 'original'].includes(value)
   },
   style: Object
 })
-const imageUrl = computed(() => ({ ...(props.image ?? {}) })[props.size])
-const source = computed(() => imageUrl.value ?? noImageUrl)
+const source = computed(() => props.image?.[props.size] ?? noImageUrl)
 </script>
