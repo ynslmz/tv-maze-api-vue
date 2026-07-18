@@ -9,13 +9,9 @@
 
 <script setup lang="ts">
 import type { Show } from '@/types/show.type'
-import type { PropType } from 'vue'
 import ShowCard from '@/components/ShowCard.vue'
 
-defineProps({
-  genre: { type: String, required: true },
-  shows: { type: Object as PropType<Show[]>, required: true }
-})
+defineProps<{ genre: string; shows: Show[] }>()
 </script>
 <style lang="scss" scoped>
 .genre {
@@ -33,7 +29,7 @@ defineProps({
     overflow: auto hidden;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: $mobile) {
     &-title {
       font-size: $fs4;
     }

@@ -1,29 +1,24 @@
 <template>
   <router-link :to="`/detail/${item.id}`" class="result-item">
-    <Image class="result-item-img" :image="item.image" :alt="item.name" style="" />
+    <Image class="result-item-img" :image="item.image" :alt="item.name" />
     <div class="result-item-details flex-grow">
       <p class="result-item-details-title">{{ item.name }}</p>
-      <Badge v-if="avarageText">{{ avarageText }} </Badge>
+      <Badge v-if="averageText">{{ averageText }} </Badge>
     </div>
     <span class="result-item-detail"></span>
   </router-link>
-
 </template>
 
 <script setup lang="ts">
 import type { Show } from '@/types/show.type'
-import { computed, type PropType } from 'vue'
+import { computed } from 'vue'
 import Badge from '@/components/shared/Badge.vue'
 import Image from '@/components/shared/Image.vue'
+import { formatRating } from '@/utils/formatRating'
 
-const props = defineProps({
-  item: {
-    type: Object as PropType<Show>,
-    required: true
-  }
-})
+const props = defineProps<{ item: Show }>()
 
-const avarageText = computed(() => props.item.rating.average ? `${props.item.rating.average.toFixed(1)} ⭐️` : '')
+const averageText = computed(() => formatRating(props.item.rating?.average))
 </script>
 <style lang="scss" scoped>
 .result-item {

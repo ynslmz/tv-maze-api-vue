@@ -5,14 +5,14 @@
     :to="`/detail/${show.id}`"
   >
     <div class="show-item-image" :style="imageInStyle">
-      <Badge class="rating-badge" v-if="show.rating.average">{{ avarageText }}</Badge>
+      <Badge class="rating-badge" v-if="averageText">{{ averageText }}</Badge>
 
       <h5 class="show-item-title">
         {{ show.name }}
       </h5>
     </div>
     <div class="show-item-info">
-      <div class="summary" v-html="show.summary" />
+      <div class="summary" v-html="safeSummary" />
       <button class="btn-detail" type="button" :title="`Details of ${show.name}`">Detail</button>
     </div>
   </router-link>
@@ -20,18 +20,20 @@
 
 <script setup lang="ts">
 import type { Show } from '@/types/show.type'
-import type { PropType } from 'vue'
+import { computed } from 'vue'
 import Badge from './shared/Badge.vue'
+import { formatRating } from '@/utils/formatRating'
+import { sanitizeHtml } from '@/utils/sanitizeHtml'
+import { noImageUrl } from '@/utils/constValues'
 
-const props = defineProps({
-  show: { type: Object as PropType<Show>, required: true }
+const props = defineProps<{ show: Show }>()
+
+const averageText = computed(() => formatRating(props.show.rating?.average))
+const safeSummary = computed(() => sanitizeHtml(props.show.summary))
+const imageInStyle = computed(() => {
+  const imageUrl = props.show.image?.medium || noImageUrl
+  return `background: center / 100% 100%   no-repeat  url("${imageUrl}")`
 })
-
-const avarageText = props.show.rating.average ? `${props.show.rating.average.toFixed(1)} ⭐️` : ''
-
-const imageUrl = props.show.image?.medium || 'https://via.placeholder.com/210x295?text=No image'
-
-const imageInStyle = `background: center / 100% 100%   no-repeat  url(${imageUrl})`
 </script>
 
 <style lang="scss" scoped>
@@ -108,7 +110,7 @@ $img-height: 295px;
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: $mobile) {
     width: calc($card-width / 1.5);
     &-image {
       height: calc($img-height/1.5);

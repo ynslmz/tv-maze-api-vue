@@ -10,12 +10,9 @@
 </template>
 <script setup lang="ts">
 import type { Cast } from '@/types/show.type'
-import type { PropType } from 'vue'
 import Person from '@/components/Person.vue'
 
-defineProps({
-  cast: { type: Object as PropType<Cast[]>, required: true }
-})
+defineProps<{ cast: Cast[] }>()
 </script>
 <style lang="scss" scoped>
 .cast {

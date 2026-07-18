@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // fonts
 $title-font: 'Roboto Condensed', sans-serif;
 $text-font: Roboto, sans-serif;
@@ -27,15 +29,6 @@ $fs8: $font-size * 1.75; // 28px
 $fs9: $font-size * 1.875; // 30px
 $fs10: $font-size * 2; // 32px
 
-/// for headings
-@for $i from 1 through 6 {
-  h#{7 - $i} {
-    font-family: $title-font;
-    font-size: 1 + $i * 0.25rem;
-    font-weight: 400 + $i * 100;
-  }
-}
-
 $max-width: 1600px;
 $mobile: 768px;
 $tablet: 992px;
@@ -51,9 +44,9 @@ $success: #28a745;
 $danger: #dc3545;
 $primary: #00716b;
 $secondary: #ffd200;
-$primary-dark: scale-color(#00716b, $lightness: -20%);
-$primary-light: scale-color(#00716b, $lightness: 20%);
-$secondary-dark: scale-color(#ffd200, $lightness: -20%);
-$secondary-light: scale-color(#ffd200, $lightness: 20%);
+$primary-dark: color.scale(#00716b, $lightness: -20%);
+$primary-light: color.scale(#00716b, $lightness: 20%);
+$secondary-dark: color.scale(#ffd200, $lightness: -20%);
+$secondary-light: color.scale(#ffd200, $lightness: 20%);
 // gradint effect
 $primary-gradient: linear-gradient(to right, $primary-dark, $primary-light);

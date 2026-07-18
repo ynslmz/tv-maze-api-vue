@@ -1,23 +1,21 @@
 import axios from 'axios'
-import router from '../router'
+
 export const client = axios.create({
   baseURL: import.meta.env.VITE_API_URL
 })
 
+// Errors are intentionally NOT handled globally here. A failed request should
+// not eject the user from the whole app (e.g. a failed search must not navigate
+// away). Callers (the store actions) catch errors and decide how to surface
+// them — inline error state, or an explicit /notfound for a missing resource.
 client.interceptors.response.use(
   (res) => res,
-  (err) => {
-    /// I sent all errors to not found page, you can handle it as you wish here
-    // Handle as you wish, push to sentry, log it, show a popup etc.
-    // Or warn user there is something wrong but it's not you...
-    router.push('/notfound')
-    return Promise.reject(err)
-  }
+  (err) => Promise.reject(err)
 )
 
 const Api = {
   get(url: string) {
-    return client?.get(url)
+    return client.get(url)
   }
 }
 

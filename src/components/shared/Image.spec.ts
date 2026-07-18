@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils'
 import Image from './Image.vue'
 import { describe, expect, it } from 'vitest'
 import { getMockImage } from '../../utils/test-data.mock'
+import { noImageUrl } from '../../utils/constValues'
 
 const mockImageProps = {
   image: getMockImage(),
@@ -44,17 +45,6 @@ describe('Image.vue', () => {
     expect(img.attributes('src')).toBe('original.jpg')
   })
 
-  it('size prop validator works correctly', () => {
-    const wrapper = mount(Image, {
-      props: {
-        ...mockImageProps
-      }
-    })
-    expect(wrapper.vm.$options.props.size.validator('something')).toBe(false)
-    expect(wrapper.vm.$options.props.size.validator('medium')).toBe(true)
-    expect(wrapper.vm.$options.props.size.validator('original')).toBe(true)
-  })
-
   it('shows a placeholder image if image prop is not provided', () => {
     const wrapper = mount(Image, {
       props: {
@@ -63,6 +53,6 @@ describe('Image.vue', () => {
       }
     })
     const img = wrapper.find('img')
-    expect(img.attributes('src')).toContain('https://via.placeholder.com')
+    expect(img.attributes('src')).toBe(noImageUrl)
   })
 })
