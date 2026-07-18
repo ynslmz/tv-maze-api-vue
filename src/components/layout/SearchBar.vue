@@ -19,8 +19,8 @@
     </div>
     <SearchResults
       v-show="showDropdown"
-      :list="store.getSearchResults"
-      :error="store.getSearchError"
+      :list="store.searchResults"
+      :error="store.searchError"
       :active-index="activeIndex"
       @click="handleClick"
     />
@@ -42,10 +42,10 @@ const searchText = defineModel<string>({ default: '' })
 const activeIndex = ref(-1)
 
 const showDropdown = computed(
-  () => store.getSearchResults.length > 0 || (searchText.value?.length ?? 0) > 0
+  () => store.searchResults.length > 0 || (searchText.value?.length ?? 0) > 0
 )
 const activeDescendant = computed(() => {
-  const active = store.getSearchResults[activeIndex.value]
+  const active = store.searchResults[activeIndex.value]
   return active ? `search-option-${active.show.id}` : undefined
 })
 
@@ -61,7 +61,7 @@ function onSearch() {
 }
 
 function onKeydown(event: KeyboardEvent) {
-  const results = store.getSearchResults
+  const results = store.searchResults
   switch (event.key) {
     case 'ArrowDown':
       if (results.length) {

@@ -7,15 +7,13 @@
         <component :is="Component" />
       </transition>
     </router-view>
-    <Loading v-if="isLoading || store.getLoading" />
+    <Loading v-if="store.loading" />
   </main>
 </template>
 <script setup lang="ts">
 import Header from './components/layout/Header.vue'
 import Loading from './components/layout/Loading.vue'
-import { useLoading } from './composables/useLoading'
 import { useShowStore } from './store/show'
-const { isLoading } = useLoading()
 const store = useShowStore()
 </script>
 

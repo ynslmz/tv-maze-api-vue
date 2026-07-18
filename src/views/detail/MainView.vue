@@ -26,7 +26,7 @@ import Image from '@/components/shared/Image.vue'
 import { sanitizeHtml } from '@/utils/sanitizeHtml'
 import { computed } from 'vue'
 const store = useShowStore()
-const show = computed(() => store.getShowDetail)
+const show = computed(() => store.show)
 const safeSummary = computed(() => sanitizeHtml(show.value?.summary))
 </script>
 

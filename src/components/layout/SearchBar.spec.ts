@@ -54,6 +54,6 @@ describe('SearchBar.vue keyboard navigation', () => {
 
     await input.trigger('keydown', { key: 'Escape' })
 
-    expect(store.getSearchResults).toEqual([])
+    expect(store.searchResults).toEqual([])
   })
 })

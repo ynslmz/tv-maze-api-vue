@@ -5,5 +5,5 @@
 import { useShowStore } from '@/store/show'
 import EpisodeList from '@/components/EpisodeList.vue'
 import { computed } from 'vue'
-const episodes = computed(() => useShowStore().getShowDetail?._embedded.episodes)
+const episodes = computed(() => useShowStore().show?._embedded.episodes)
 </script>

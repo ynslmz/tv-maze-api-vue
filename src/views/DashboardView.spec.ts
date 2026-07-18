@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { createPinia, setActivePinia } from 'pinia'
 import DashboardView from './DashboardView.vue'
 import GenreNav from '@/components/GenreNav.vue'
@@ -16,8 +16,18 @@ function mountDashboard() {
 describe('DashboardView.vue', () => {
   beforeEach(() => setActivePinia(createPinia()))
 
+  it('fetches shows on mount', () => {
+    const store = useShowStore()
+    const spy = vi.spyOn(store, 'fetchShows').mockResolvedValue()
+
+    mountDashboard()
+
+    expect(spy).toHaveBeenCalled()
+  })
+
   it('renders one GenreCard per genre', () => {
     const store = useShowStore()
+    vi.spyOn(store, 'fetchShows').mockResolvedValue()
     store.$patch({
       genres: ['Comedy', 'Drama'],
       orderedShows: { Comedy: [], Drama: [] }
@@ -29,6 +39,7 @@ describe('DashboardView.vue', () => {
 
   it('shows an error message with a retry button when the store has an error', () => {
     const store = useShowStore()
+    vi.spyOn(store, 'fetchShows').mockResolvedValue()
     store.$patch({ error: 'Unable to load shows. Please try again.' })
 
     const wrapper = mountDashboard()
@@ -37,7 +48,8 @@ describe('DashboardView.vue', () => {
   })
 
   it('shows an empty message when there are no genres and it is not loading', () => {
-    useShowStore() // empty state by default
+    const store = useShowStore()
+    vi.spyOn(store, 'fetchShows').mockResolvedValue()
 
     const wrapper = mountDashboard()
     expect(wrapper.find('.state-message').text()).toBe('No shows to display.')
@@ -45,6 +57,7 @@ describe('DashboardView.vue', () => {
 
   it('filters to a single genre when one is selected in the nav', async () => {
     const store = useShowStore()
+    vi.spyOn(store, 'fetchShows').mockResolvedValue()
     store.$patch({
       genres: ['Comedy', 'Drama', 'Sports'],
       orderedShows: { Comedy: [], Drama: [], Sports: [] }

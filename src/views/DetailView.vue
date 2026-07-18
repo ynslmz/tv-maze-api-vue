@@ -19,22 +19,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useShowStore } from '@/store/show'
-import { computed, onBeforeMount } from 'vue'
-import { useRoute, useRouter, onBeforeRouteUpdate } from 'vue-router'
-const store = useShowStore()
-const show = computed(() => store.getShowDetail)
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { useShowData } from '@/composables/useShowData'
+const store = useShowData()
+const show = computed(() => store.show)
 const viewName = computed(() => ` ${useRouter().currentRoute.value.name?.toString()}`)
 const showUrl = computed(() => `/detail/${show.value?.id}`)
-const route = useRoute()
-
-onBeforeMount(() => {
-  store.fetchShowById(String(route.params.id))
-})
-
-onBeforeRouteUpdate((to) => {
-  store.fetchShowById(String(to.params.id))
-})
 </script>
 
 <style lang="scss" scoped>

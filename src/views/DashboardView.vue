@@ -1,22 +1,22 @@
 <template>
   <div class="container">
-    <div v-if="store.getError" class="state-message" role="alert">
-      <p>{{ store.getError }}</p>
+    <div v-if="store.error" class="state-message" role="alert">
+      <p>{{ store.error }}</p>
       <button type="button" class="retry" @click="reload">Try again</button>
     </div>
 
     <p v-else-if="isEmpty" class="state-message">No shows to display.</p>
 
     <template v-else>
-      <GenreNav :genres="store.getGenres" :selected="selectedGenre" @select="selectGenre" />
+      <GenreNav :genres="store.genres" :selected="selectedGenre" @select="selectGenre" />
       <GenreCard
         v-for="genre in visibleGenres"
         :key="genre"
         :genre="genre"
-        :shows="store.getShowsByGenre(genre)"
+        :shows="store.showsByGenre(genre)"
       />
       <div class="flex flex-justify-center flex-align-center">
-        <Pager :page="store.getPage" :has-next="store.getHasMore" @pageChange="handleClick" />
+        <Pager :page="store.page" :has-next="store.hasMore" @pageChange="handleClick" />
       </div>
     </template>
   </div>
@@ -24,18 +24,16 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useShowStore } from '@/store/show'
+import { useShowsData } from '@/composables/useShowsData'
 import GenreCard from '@/components/GenreCard.vue'
 import GenreNav from '@/components/GenreNav.vue'
 import Pager from '@/components/Pager.vue'
-const store = useShowStore()
+const store = useShowsData()
 
 const selectedGenre = ref<string | null>(null)
 
-const isEmpty = computed(() => !store.getLoading && store.getGenres.length === 0)
-const visibleGenres = computed(() =>
-  selectedGenre.value ? [selectedGenre.value] : store.getGenres
-)
+const isEmpty = computed(() => !store.loading && store.genres.length === 0)
+const visibleGenres = computed(() => (selectedGenre.value ? [selectedGenre.value] : store.genres))
 
 function selectGenre(genre: string | null) {
   selectedGenre.value = genre
@@ -48,7 +46,7 @@ function handleClick(e: number) {
 }
 
 function reload() {
-  store.fetchShows(true, store.getPage)
+  store.fetchShows(true, store.page)
 }
 </script>
 
